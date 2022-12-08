@@ -1,6 +1,5 @@
-import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget";
-
 
 const NavBar = () => {
     return (
@@ -9,9 +8,7 @@ const NavBar = () => {
                 <div className="col-md-8">
                     <nav className="navbar navbar-expand-lg bg-white">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="#">
-                                <img src="images/samsung.png" alt="Samsung" width="120" />
-                            </a>
+                            <Link className="navbar-brand" to={"/"}><img src="images/samsung.png" alt="Samsung" width="120" /></Link>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                             </button>
@@ -20,16 +17,13 @@ const NavBar = () => {
                                     <small>
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
-                                        <a className="nav-link" href="#">Móviles</a>
+                                        <NavLink className="nav-link" activeclassname="page" to={"/category/moviles"}>Móviles</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                        <a className="nav-link" href="#">TV & Audio</a>
+                                        <NavLink className="nav-link" activeclassname="page" to={"/category/tv y audio"}>TV & Audio</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                        <a className="nav-link" href="#">Electrodomésticos</a>
-                                        </li>
-                                        <li className="nav-item">
-                                        <a className="nav-link" href="#">Informática</a>
+                                        <NavLink className="nav-link" activeclassname="page" to={"/category/electrodomesticos"}>Electrodomésticos</NavLink>
                                         </li>
                                     </ul>
                                     </small>
