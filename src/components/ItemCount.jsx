@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import { useState } from "react";
-
-const ItemCount = ({stock}) => {
+import { Link } from "react-router-dom";
+const ItemCount = ({stock, onAdd}) => {
     const [counter, setCounter] = useState(1);
+    const [itemStock, setItemStock] = useState(stock);
+    const [vendido, setVendido] = useState(false);
 
     const decrementarStock = () => {
         if (counter > 1) {
@@ -10,16 +13,24 @@ const ItemCount = ({stock}) => {
     }
 
     const incrementarStock = () => {
-        if (counter < stock) {
+        if (counter < itemStock) {
         setCounter(counter + 1);
         }
-    }
-    
-    const  onAdd = () => {
-        if (stock > 0) {
-            console.log("Agregaste: " + counter + " Productos al carrito");
-        }
     } 
+
+    const addToCart = (quantity) => {
+        if (counter <= itemStock) {
+            setCounter(1);
+            setItemStock(itemStock - quantity);
+            setVendido(true);
+            onAdd(quantity);
+        }
+        
+    }
+
+    useEffect(() => {
+        setItemStock(stock)
+    }, [stock])
     
     return (
         <div>
@@ -29,7 +40,7 @@ const ItemCount = ({stock}) => {
                 <button type="button" className="btn btn-outline-dark" onClick={incrementarStock}>+</button>
             </div>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button className="btn btn-primary rounded-pill" type="button" onClick={onAdd}>Comprar ahora</button>
+                {vendido ? <Link to={"/cart"} className="btn btn-primary rounded-pill">Terminar Mi Compra</Link> : <button className="btn btn-primary rounded-pill" type="button" onClick={() => {addToCart(counter)}}>Comprar ahora</button>}
             </div>
         </div>
     )

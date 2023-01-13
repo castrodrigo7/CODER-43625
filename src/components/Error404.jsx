@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Error404 = () => {
   return (
     <div className="container my-5">
@@ -8,7 +10,7 @@ const Error404 = () => {
             <div className="ps-5">
                 <h3 class="alert-heading">La página solicitada no está disponible</h3>
                 <p>Probablemente la dirección que ingresó es incorrecta, no existe o tiene un enlace roto. Para obtener más información, consulte el mapa del sitio</p>
-                <a href="#" class="alert-link">Ir a la página de inicio de Samsung</a>
+                <Link to={"/"} class="alert-link">Ir a la página de inicio de Samsung</Link>
             </div>
         </div>
     </div>
